@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deposit Funds | ApexTrades</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">ApexTrades</div>
+        <div class="nav-links">
+          <a href="/dashboard.html">Dashboard</a>
+          <a href="/payment.html" class="active">Deposit</a>
+          <a href="/withdrawal.html">Withdraw</a>
+          <a href="/transactions.html">Transactions</a>
+        </div>
+        <button class="btn btn-outline logout-btn">Logout</button>
+        <button class="theme-toggle" id="theme-toggle">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="max-width: 800px; margin: 40px auto;">
+    <div class="card">
+      <h1>Deposit Funds</h1>
+      <p>Choose your investment plan and payment method</p>
+      
+      <form id="payment-form" style="margin-top: 30px;">
+        <div class="form-group">
+          <label for="payment-plan" class="form-label">Investment Plan</label>
+          <select id="payment-plan" class="form-input" required>
+            <option value="">Select a plan</option>
+            <option value="starter">Starter ($299 - $999)</option>
+            <option value="advanced">Advanced ($1,000 - $9,999)</option>
+            <option value="professional">Professional ($10,000 - $50,000)</option>
+            <option value="institutional">Institutional ($50,000 - $100,000)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="payment-amount" class="form-label">Amount (USD)</label>
+          <input type="number" id="payment-amount" class="form-input" min="299" required>
+        </div>
+        
+        <div class="crypto-payment">
+          <h3 style="margin-bottom: 15px;">Payment Method</h3>
+          
+          <div class="crypto-option active" data-crypto="btc">
+            <input type="radio" name="crypto-method" id="btc-method" checked>
+            <label for="btc-method">Bitcoin (BTC)</label>
+          </div>
+          
+          <div class="crypto-option" data-crypto="usdt_erc">
+            <input type="radio" name="crypto-method" id="usdt-erc-method">
+            <label for="usdt-erc-method">USDT (ERC-20)</label>
+          </div>
+          
+          <div class="crypto-option" data-crypto="usdt_trc">
+            <input type="radio" name="crypto-method" id="usdt-trc-method">
+            <label for="usdt-trc-method">USDT (TRC-20)</label>
+          </div>
+          
+          <div class="crypto-option" data-crypto="usdc_sol">
+            <input type="radio" name="crypto-method" id="usdc-sol-method">
+            <label for="usdc-sol-method">USDC (SOL)</label>
+          </div>
+          
+          <div id="crypto-address-display" style="margin-top: 20px; display: none;">
+            <h4>Send payment to:</h4>
+            <div class="crypto-address">
+              <p id="crypto-address-text"></p>
+            </div>
+            <div class="qr-code">
+              <!-- QR code will be generated here -->
+              <p style="text-align: center;">Scan QR code to pay</p>
+            </div>
+            <p style="margin-top: 15px; font-size: 14px; color: var(--warning);">
+              Note: Your deposit will be processed after 3 network confirmations.
+            </p>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="margin-top: 30px; width: 100%;">
+          Generate Deposit Address
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script src="/assets/js/scripts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cryptoOptions = document.querySelectorAll('.crypto-option');
+      const addressDisplay = document.getElementById('crypto-address-display');
+      const addressText = document.getElementById('crypto-address-text');
+      
+      // Crypto addresses
+      const addresses = {
+        btc: 'bc1qp7s85248d5m4d2c7pkrwz6cfwejugxexkjuvk8',
+        usdt_erc: '0x2a2B73a1dA165Aec951C0fc3B576E575AFC30Ab3',
+        usdt_trc: 'TCWykp5Q1vu9LTCcmzHmmVNwxHZSnLkCEG',
+        usdc_sol: '97Qv49f1pKqUhCWjFohgL9dCLkqKTFXkWt7gMExtQFsM'
+      };
+      
+      // Update address display when crypto option changes
+      cryptoOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const crypto = option.dataset.crypto;
+          addressText.textContent = addresses[crypto];
+          addressDisplay.style.display = 'block';
+        });
+      });
+      
+      // Initialize with BTC address
+      addressText.textContent = addresses.btc;
+      addressDisplay.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

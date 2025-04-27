@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support | ApexTrades</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">ApexTrades</div>
+        <div class="nav-links">
+          <a href="/dashboard.html">Dashboard</a>
+          <a href="/payment.html">Deposit</a>
+          <a href="/withdrawal.html">Withdraw</a>
+          <a href="/support.html" class="active">Support</a>
+        </div>
+        <button class="btn btn-outline logout-btn">Logout</button>
+        <button class="theme-toggle" id="theme-toggle">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="max-width: 800px; margin: 40px auto;">
+    <div class="card">
+      <h1>Support Center</h1>
+      <p>Contact our support team for assistance</p>
+      
+      <div id="chat-messages" style="height: 400px; overflow-y: auto; margin: 30px 0; border: 1px solid var(--border); border-radius: 6px; padding: 15px;">
+        <!-- Messages will appear here -->
+      </div>
+      
+      <form id="support-form">
+        <div class="form-group">
+          <label for="support-message" class="form-label">Your Message</label>
+          <textarea id="support-message" class="form-input" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="/assets/js/scripts.js"></script>
+</body>
+</html>

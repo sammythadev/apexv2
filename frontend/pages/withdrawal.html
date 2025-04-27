@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Withdraw Funds | ApexTrades</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">ApexTrades</div>
+        <div class="nav-links">
+          <a href="/dashboard.html">Dashboard</a>
+          <a href="/payment.html">Deposit</a>
+          <a href="/withdrawal.html" class="active">Withdraw</a>
+          <a href="/transactions.html">Transactions</a>
+        </div>
+        <button class="btn btn-outline logout-btn">Logout</button>
+        <button class="theme-toggle" id="theme-toggle">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="max-width: 800px; margin: 40px auto;">
+    <div class="card">
+      <h1>Withdraw Funds</h1>
+      <p>Request a withdrawal to your crypto wallet</p>
+      
+      <div class="balance" style="margin: 20px 0; font-size: 24px;">
+        Available Balance: <span id="withdrawal-balance">$0.00</span>
+      </div>
+      
+      <form id="withdrawal-form" style="margin-top: 30px;">
+        <div class="form-group">
+          <label for="withdrawal-amount" class="form-label">Amount (USD)</label>
+          <input type="number" id="withdrawal-amount" class="form-input" min="10" step="0.01" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="withdrawal-method" class="form-label">Withdrawal Method</label>
+          <select id="withdrawal-method" class="form-input" required>
+            <option value="">Select method</option>
+            <option value="btc">Bitcoin (BTC)</option>
+            <option value="usdt_erc">USDT (ERC-20)</option>
+            <option value="usdt_trc">USDT (TRC-20)</option>
+            <option value="usdc_sol">USDC (SOL)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="withdrawal-address" class="form-label">Wallet Address</label>
+          <input type="text" id="withdrawal-address" class="form-input" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="margin-top: 30px; width: 100%;">
+          Request Withdrawal
+        </button>
+      </form>
+      
+      <div style="margin-top: 30px; padding: 15px; background-color: var(--bg-dark); border-radius: 6px;">
+        <h3>Withdrawal Information</h3>
+        <ul style="margin-top: 10px; padding-left: 20px;">
+          <li>Minimum withdrawal: $10</li>
+          <li>Processing time: 1-24 hours</li>
+          <li>Network fees will be deducted from the withdrawal amount</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="/assets/js/scripts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        window.location.href = '/login.html';
+        return;
+      }
+      
+      // Fetch user balance
+      fetch('/api/user/balance', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.balance !== undefined) {
+          document.getElementById('withdrawal-balance').textContent = `$${data.balance.toFixed(2)}`;
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching balance:', error);
+      });
+    });
+  </script>
+</body>
+</html>

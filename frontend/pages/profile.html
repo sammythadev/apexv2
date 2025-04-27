@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | ApexTrades</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">ApexTrades</div>
+        <div class="nav-links">
+          <a href="/dashboard.html">Dashboard</a>
+          <a href="/payment.html">Deposit</a>
+          <a href="/withdrawal.html">Withdraw</a>
+          <a href="/profile.html" class="active">Profile</a>
+        </div>
+        <button class="btn btn-outline logout-btn">Logout</button>
+        <button class="theme-toggle" id="theme-toggle">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="max-width: 800px; margin: 40px auto;">
+    <div class="card">
+      <h1>Profile Settings</h1>
+      <p>Update your account information</p>
+      
+      <form id="profile-form" style="margin-top: 30px;">
+        <div class="form-group">
+          <label for="profile-username" class="form-label">Username</label>
+          <input type="text" id="profile-username" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="profile-email" class="form-label">Email</label>
+          <input type="email" id="profile-email" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="profile-password" class="form-label">New Password (leave blank to keep current)</label>
+          <input type="password" id="profile-password" class="form-input">
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="margin-top: 30px;">Update Profile</button>
+      </form>
+      
+      <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);">
+        <h3>Security</h3>
+        <button class="btn btn-outline" style="margin-top: 15px;">Enable Two-Factor Authentication</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="/assets/js/scripts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        window.location.href = '/login.html';
+        return;
+      }
+      
+      // Fetch user profile
+      fetch('/api/user/profile', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+      .then(response => response.json())
+      .then(user => {
+        document.getElementById('profile-username').value = user.username;
+        document.getElementById('profile-email').value = user.email;
+      })
+      .catch(error => {
+        console.error('Error fetching profile:', error);
+      });
+      
+      // Update profile
+      const profileForm = document.getElementById('profile-form');
+      if (profileForm) {
+        profileForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const username = document.getElementById('profile-username').value;
+          const email = document.getElementById('profile-email').value;
+          const password = document.getElementById('profile-password').value;
+          
+          try {
+            const response = await fetch('/api/user/profile', {
+              method: 'PUT',
+              headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+              },
+              body: JSON.stringify({ username, email, password })
+            });
+            
+            if (response.ok) {
+              alert('Profile updated successfully');
+              const user = JSON.parse(localStorage.getItem('user'));
+              user.username = username;
+              user.email = email;
+              localStorage.setItem('user', JSON.stringify(user));
+            } else {
+              const data = await response.json();
+              alert(data.error || 'Failed to update profile');
+            }
+          } catch (error) {
+            console.error('Profile update error:', error);
+            alert('Failed to update profile. Please try again.');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
