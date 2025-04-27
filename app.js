@@ -5,11 +5,11 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const { Pool } = require('pg');
 
-const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes');
-const paymentRoutes = require('./routes/paymentRoutes');
-const supportRoutes = require('./routes/supportRoutes');
-const adminRoutes = require('./routes/adminRoutes');
+const authRoutes = require('./backend/routes/authRoutes');
+const userRoutes = require('./backend/routes/userRoutes');
+const paymentRoutes = require('./backend/routes/paymentRoutes');
+const supportRoutes = require('./backend/routes/supportRoutes');
+const adminRoutes = require('./backend/routes/adminRoutes');
 
 const app = express();
 
