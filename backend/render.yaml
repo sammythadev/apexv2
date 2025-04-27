@@ -28,11 +28,11 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: EMAIL_USER
-        value: your-gmail@gmail.com
+        value: apextrades61@gmail.com
       - key: EMAIL_PASSWORD
-        value: your-gmail-password
+        value: lonp ycrf tebs ldjl
       - key: FRONTEND_URL
-        value: https://apextrades.vercel.app
+        value: https://apextradesv2.vercel.app
 
 databases:
   - name: apextrades-db
