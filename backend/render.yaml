@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: apextrades-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: node app.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: DB_USER
+        fromDatabase:
+          name: apextrades-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: apextrades-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: apextrades-db
+          property: host
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        fromDatabase:
+          name: apextrades-db
+          property: database
+      - key: JWT_SECRET
+        generateValue: true
+      - key: EMAIL_USER
+        value: your-gmail@gmail.com
+      - key: EMAIL_PASSWORD
+        value: your-gmail-password
+      - key: FRONTEND_URL
+        value: https://apextrades.vercel.app
+
+databases:
+  - name: apextrades-db
+    plan: free
+    databaseName: apextrades
+    user: apextrades_user

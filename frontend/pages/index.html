@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexTrades - Crypto Copy Trading</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">ApexTrades</div>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#about">About</a>
+        </div>
+        <div class="auth-buttons">
+          <a href="/login.html" class="btn btn-outline">Login</a>
+          <a href="/signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+        <button class="theme-toggle" id="theme-toggle">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" style="padding: 80px 0; text-align: center;">
+      <h1 style="font-size: 48px; margin-bottom: 20px;">Automated Crypto Copy Trading</h1>
+      <p style="font-size: 20px; color: var(--text-light); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+        Join ApexTrades and copy the trades of top crypto traders automatically. Start with as little as $299.
+      </p>
+      <a href="/signup.html" class="btn btn-primary" style="padding: 12px 24px; font-size: 18px;">Get Started</a>
+    </section>
+
+    <section id="crypto-prices" style="margin: 60px 0;">
+      <h2 style="text-align: center; margin-bottom: 30px;">Live Crypto Prices</h2>
+      <div class="card" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 30px;">
+        <div class="crypto-price">
+          <h3>BTC/USD</h3>
+          <p id="btc-price" style="font-size: 24px; font-weight: 600;">Loading...</p>
+        </div>
+        <div class="crypto-price">
+          <h3>ETH/USD</h3>
+          <p id="eth-price" style="font-size: 24px; font-weight: 600;">Loading...</p>
+        </div>
+        <div class="crypto-price">
+          <h3>USDT/USD</h3>
+          <p id="usdt-price" style="font-size: 24px; font-weight: 600;">1.00</p>
+        </div>
+        <div class="crypto-price">
+          <h3>USDC/USD</h3>
+          <p id="usdc-price" style="font-size: 24px; font-weight: 600;">1.00</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" style="margin: 80px 0;">
+      <h2 style="text-align: center; margin-bottom: 40px;">Why Choose ApexTrades</h2>
+      <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <div class="feature-card card">
+          <h3>Automated Trading</h3>
+          <p>Copy trades automatically without manual intervention. Our bots execute trades instantly.</p>
+        </div>
+        <div class="feature-card card">
+          <h3>Expert Traders</h3>
+          <p>Follow and copy the strategies of our verified expert traders with proven track records.</p>
+        </div>
+        <div class="feature-card card">
+          <h3>Risk Management</h3>
+          <p>Set your own risk parameters and stop-loss levels to protect your investments.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" style="margin: 80px 0;">
+      <h2 style="text-align: center; margin-bottom: 40px;">Investment Plans</h2>
+      <div class="payment-plans">
+        <div class="plan">
+          <h3 class="plan-title">Starter</h3>
+          <p class="plan-price">$299 - $999</p>
+          <ul class="plan-features">
+            <li>Basic copy trading</li>
+            <li>5 expert traders to follow</li>
+            <li>Email support</li>
+            <li>Monthly performance reports</li>
+          </ul>
+          <a href="/signup.html" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="plan">
+          <h3 class="plan-title">Advanced</h3>
+          <p class="plan-price">$1,000 - $9,999</p>
+          <ul class="plan-features">
+            <li>Priority copy trading</li>
+            <li>15+ expert traders</li>
+            <li>24/7 support</li>
+            <li>Weekly performance reports</li>
+            <li>Basic risk management</li>
+          </ul>
+          <a href="/signup.html" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="plan">
+          <h3 class="plan-title">Professional</h3>
+          <p class="plan-price">$10,000 - $50,000</p>
+          <ul class="plan-features">
+            <li>VIP copy trading</li>
+            <li>All expert traders</li>
+            <li>Dedicated account manager</li>
+            <li>Daily performance reports</li>
+            <li>Advanced risk management</li>
+            <li>Custom strategies</li>
+          </ul>
+          <a href="/signup.html" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="plan">
+          <h3 class="plan-title">Institutional</h3>
+          <p class="plan-price">$50,000 - $100,000</p>
+          <ul class="plan-features">
+            <li>Premium copy trading</li>
+            <li>All expert traders + alpha signals</li>
+            <li>24/7 priority support</li>
+            <li>Real-time performance tracking</li>
+            <li>Custom risk management</li>
+            <li>Personalized strategies</li>
+            <li>Exclusive events</li>
+          </ul>
+          <a href="/signup.html" class="btn btn-primary">Get Started</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background-color: var(--card-bg); padding: 40px 0; margin-top: 80px;">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+        <div>
+          <h3>ApexTrades</h3>
+          <p>Automated crypto copy trading platform</p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul style="list-style: none;">
+            <li><a href="/">Home</a></li>
+            <li><a href="/login.html">Login</a></li>
+            <li><a href="/signup.html">Sign Up</a></li>
+            <li><a href="/support.html">Support</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Legal</h3>
+          <ul style="list-style: none;">
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Risk Disclosure</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);">
+        <p>© 2023 ApexTrades. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/scripts.js"></script>
+  <script>
+    // Fetch crypto prices (mock - in production use TradingView API)
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('btc-price').textContent = '$' + (Math.random() * 1000 + 30000).toFixed(2);
+        document.getElementById('eth-price').textContent = '$' + (Math.random() * 100 + 1800).toFixed(2);
+      }, 1000);
+      
+      // Update prices every 10 seconds
+      setInterval(() => {
+        document.getElementById('btc-price').textContent = '$' + (Math.random() * 1000 + 30000).toFixed(2);
+        document.getElementById('eth-price').textContent = '$' + (Math.random() * 100 + 1800).toFixed(2);
+      }, 10000);
+    });
+  </script>
+</body>
+</html>
